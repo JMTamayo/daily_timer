@@ -12,10 +12,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <header>
+        <h4 id="themeTitle">Theme</h4>
+        <input id="dark" class="themebtn" type="button" value="D" onclick="changeIndexTheme(this.id)">
+        <input id="light" class="themebtn" type="button" value="L" onclick="changeIndexTheme(this.id)">
+        <input id="pink" class="themebtn" type="button" value="P" onclick="changeIndexTheme(this.id)">
+        <input id="blue" class="themebtn" type="button" value="B" onclick="changeIndexTheme(this.id)">
+        <input id="yellow" class="themebtn" type="button" value="Y" onclick="changeIndexTheme(this.id)">
+        <input id="green" class="themebtn" type="button" value="G" onclick="changeIndexTheme(this.id)">
+    </header>
     <main>
         <section class="clock_cont">
-            <p id="clock"></p>
-            <p id="date"></p>
+            <p id="clock">Daily Timer</p>
+            <p id="date">by JMTamayo</p>
         </section>
     </main>
     <footer>
@@ -23,6 +32,7 @@
         <a href="https://linkedin.com/in/juanmtamayo" target="_blank"><img class="imgLink" src="./img/linkedin.png" alt="_LinkedIn"></a>
         <a href="https://github.com/JMTamayo" target="_blank"><img class="imgLink" src="./img/github.png" alt="_gitHub"></a>
     </footer>
-    <script src="./script.js"></script>
+    <script src="./script/app.js"></script>
+    <script src="./script/theme.js"></script>
 </body>
 </html>

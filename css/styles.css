@@ -1,3 +1,12 @@
+:root {
+    /*Application Styles Variables:*/
+        --bgclr:    #000000;
+        --fntclr:   #000000;
+        --hvrclr:   #000000;
+        --imgbkgclr:#000000;
+        --brdclr:   #000000;
+}
+
 * {
     /*Box model:*/
         box-sizing: border-box;
@@ -7,7 +16,7 @@
 
 body {
     /*Background:*/
-    background-color: #000000;
+    background-color: var(--bgclr);
 
     /*Box model:*/
         height:     100vh;
@@ -20,13 +29,25 @@ body {
         justify-content:    center;
 
     /*Font:*/
-        color:          #FFFFFF;
+        color:          var(--fntclr);
         font-family:    'Ubuntu', sans-serif;
+}
+
+header {
+    /*Box model:*/
+        height: 10%;
+        width:  90%;
+
+    /*Display:*/
+        display:            flex;
+        align-items:        center;
+        justify-content:    flex-start;
+        column-gap:         4px;
 }
 
 main {
     /*Box model:*/
-        height: 95vh;
+        height: 80%;
         width: 90%;
 
     /*Display:*/
@@ -38,7 +59,7 @@ main {
 
 footer {
     /*Box model:*/
-        height: 5vh;
+        height: 10%;
         width: 90%;
 
     /*Display:*/
@@ -57,14 +78,14 @@ footer {
 
 #clock {
     /*Font:*/
-        font-size:      60px;
+        font-size:      80px;
         font-weight:    400;
         text-align:     center;
 }
 
 #date {
     /*Font:*/
-        font-size:      30px;
+        font-size:      40px;
         font-weight:    300;
         text-align:     center;
 }
@@ -77,17 +98,53 @@ footer {
 
 .link {
     /*Font:*/
-        color: #FFFFFF;
-        font-weight: 600;
-        text-decoration: none;
+        color:              var(--fntclr);
+        font-weight:        600;
+        text-decoration:    none;
 }
 
 .link:hover {
     /*Font:*/
-        color: #cfcece;
+        color: var(--hvrclr);
 }
 
 .imgLink {
-    background-color: white;
-    height: 20px;
+    /*Box model:*/
+        background-color:   var(--imgbkgclr);
+        border:             1px solid var(--brdclr);
+        border-radius:      1px;
+        height:             22px;
+        padding:            2px;
+}   
+
+.imgLink:hover {
+    /*Box model:*/
+        background-color:   var(--hvrclr);
+        cursor:             pointer;
+        border:             none;
+}
+
+.themebtn {
+    /*Box model:*/
+        border:     solid 1px;
+        height:     22px;
+        width:      22px;
+        padding:    2px;
+
+    /*Font:*/
+        font-size:      16;
+        font-weight:    600;
+        
+}
+
+.themebtn:hover {
+    /*Box model:*/
+        height:     24px;
+        width:      24px;
+        cursor:     pointer;
+}
+
+#themeTitle {
+    /*Font:*/
+        font-weight: 300;
 }
