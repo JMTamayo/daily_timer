@@ -1,0 +1,93 @@
+* {
+    /*Box model:*/
+        box-sizing: border-box;
+        margin:     0;
+        padding:    0;
+}
+
+body {
+    /*Background:*/
+    background-color: #000000;
+
+    /*Box model:*/
+        height:     100vh;
+        width:      100vw;
+
+    /*Display:*/
+        display:            flex;
+        flex-direction:     column;
+        align-items:        center;
+        justify-content:    center;
+
+    /*Font:*/
+        color:          #FFFFFF;
+        font-family:    'Ubuntu', sans-serif;
+}
+
+main {
+    /*Box model:*/
+        height: 95vh;
+        width: 90%;
+
+    /*Display:*/
+        display:            flex;
+        flex-direction:     column;
+        align-items:        center;
+        justify-content:    center;
+}
+
+footer {
+    /*Box model:*/
+        height: 5vh;
+        width: 90%;
+
+    /*Display:*/
+        display:            flex;
+        align-items:        center;
+        justify-content:    flex-end;
+        column-gap:         4px;
+}
+
+#clock_cont {
+    /*Display:*/
+        display:        flex;
+        flex-direction: column;
+        align-items:    center;
+}
+
+#clock {
+    /*Font:*/
+        font-size:      60px;
+        font-weight:    400;
+        text-align:     center;
+}
+
+#date {
+    /*Font:*/
+        font-size:      30px;
+        font-weight:    300;
+        text-align:     center;
+}
+
+#pwrd {
+    /*Font:*/
+        font-size:      14px;
+        font-weight:    400;
+}
+
+.link {
+    /*Font:*/
+        color: #FFFFFF;
+        font-weight: 600;
+        text-decoration: none;
+}
+
+.link:hover {
+    /*Font:*/
+        color: #cfcece;
+}
+
+.imgLink {
+    background-color: white;
+    height: 20px;
+}
