@@ -12,6 +12,7 @@
         box-sizing: border-box;
         margin:     0;
         padding:    0;
+        --vhsize:   100vh;
 }
 
 body {
@@ -26,7 +27,6 @@ body {
         display:            flex;
         flex-direction:     column;
         align-items:        center;
-        justify-content:    center;
 
     /*Font:*/
         color:          var(--fntclr);
@@ -35,7 +35,7 @@ body {
 
 header {
     /*Box model:*/
-        height: 10%;
+        height: 60px;
         width:  90%;
 
     /*Display:*/
@@ -47,8 +47,8 @@ header {
 
 main {
     /*Box model:*/
-        height: 80%;
-        width: 90%;
+        height: 100%;
+        width:  90%;
 
     /*Display:*/
         display:            flex;
@@ -59,8 +59,8 @@ main {
 
 footer {
     /*Box model:*/
-        height: 10%;
-        width: 90%;
+        height: 60px;
+        width:  90%;
 
     /*Display:*/
         display:            flex;
@@ -126,10 +126,10 @@ footer {
 
 .themebtn {
     /*Box model:*/
-        border:     solid 1px;
-        height:     22px;
-        width:      22px;
-        padding:    2px;
+        border-style:   solid 2px var(--hvrclr);
+        height:         22px;
+        width:          22px;
+        padding:        3px;
 
     /*Font:*/
         font-size:      16;
