@@ -55,6 +55,7 @@ main {
         flex-direction:     column;
         align-items:        center;
         justify-content:    center;
+        row-gap:            32px;
 }
 
 footer {
@@ -87,6 +88,109 @@ footer {
     /*Font:*/
         font-size:      40px;
         font-weight:    300;
+        text-align:     center;
+}
+
+#timerCont {
+    /*Box model:*/
+        border:         solid 1px var(--fntclr);
+        border-radius:  6px;
+        padding:        12px;
+
+    /*Display:*/
+        display:        none;       
+}
+
+#workingTimerTitle {
+    /*Font:*/
+        font-size:      20px;
+        font-weight:    600;
+}
+
+#workingTimeCont {
+    /*Display:*/
+        display:        flex;
+        align-items:    center;
+        column-gap:     10px;
+}
+
+#workingTimeLabel {
+    /*Font:*/
+        font-size:      16px;
+        font-weight:    300;
+}
+
+#workingTimeInp {
+    /*Box model:*/
+        background-color:   var(--bgclr);
+        border: solid 1px   var(--fntclr);
+        border-radius:      6px;
+        height:             36px;
+        width:              50px;
+    
+    /*Font:*/
+        color:          var(--fntclr);
+        font-size:      20px;
+        font-weight:    300;
+        text-align:     center;
+}
+
+#workingTimeBtn {
+    /*Box model:*/
+        background-color:   var(--fntclr);
+        border: solid 1px   var(--bgclr);
+        border-radius:      25px;
+        height:             50px;
+        width:              50px;
+
+    /*Font:*/
+        color:          var(--bgclr);
+        font-size:      16px;
+        font-weight:    600;
+        text-align:     center;
+}
+
+#workingTimeBtn:hover, #stopWorkingTimeBtn:hover {
+    /*Box model:*/
+        cursor:     pointer;
+        border:     none;
+
+    /*Font:*/
+        font-size:  18px;
+}
+
+#stopWorkingTimeBtn {
+    /*Box model:*/
+        background-color:   var(--hvrclr);
+        border: solid 1px   var(--bgclr);
+        border-radius:      25px;
+        height:             50px;
+        width:              50px;
+    
+    /*Display:*/
+        display:  none;
+
+    /*Font:*/
+        color:          var(--bgclr);
+        font-size:      16px;
+        font-weight:    600;
+        text-align:     center;
+}
+
+#workingTimerResultCont {
+    /*Display:*/
+        display:        flex;
+        flex-direction: column;
+        align-items:    center;
+}
+
+#workingTimerResult {
+    /*Display:*/
+        display:        none;
+
+    /*Font:*/
+        font-size:      42px;
+        font-weight:    400;
         text-align:     center;
 }
 
@@ -127,6 +231,8 @@ footer {
 .themebtn {
     /*Box model:*/
         border-style:   solid 2px var(--hvrclr);
+        border-radius:  0;
+        text-align:     center;
         height:         22px;
         width:          22px;
         padding:        3px;
