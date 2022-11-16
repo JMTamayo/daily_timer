@@ -25,11 +25,13 @@ function stopWorkingTimer(){
     document.getElementById('workingTimeBtn').style.justifyContent = 'center';
 };
 
-function runWorkTimer(test){
+function runWorkTimer(){
     document.getElementById('workingTimerResult').style.display = 'flex';
     document.getElementById('workingTimeInp').readOnly = true;
     document.getElementById('workingTimeBtn').style.display = 'none';
     document.getElementById('stopWorkingTimeBtn').style.display = 'block';
+
+    console.log("ruuuuun")
 
     let timeLapse = 1000;
     let workingTime = {
@@ -73,11 +75,9 @@ function runWorkTimer(test){
             return `${hours}:${minutes}`;
         },
 
-        breakAlert: function(test){
+        breakAlert: function(){
             let aux = (this.totalSeconds/60)%this.breakTime;
             if( aux === 0){
-                console.log(`Alert at ${this.currentTimeMsg()} (each ${test[3]})`);
-                console.log([test[4], aux]);
                 alertBeep(15);
             };
         },
@@ -99,8 +99,7 @@ function runWorkTimer(test){
         workingTime.currentMillisec = workingTime.getMillisec();
         workingTime.totalSeconds = Math.floor((workingTime.currentMillisec - workingTime.initialMillisec)/1000);
         workingTime.updateWorkingTime();
-        test[4] = `${workingTime.hour}:${workingTime.minute}`;
-        workingTime.breakAlert(test);
+        workingTime.breakAlert();
         document.getElementById('workingTimerResult').innerText = workingTime.currentTimeMsg();
     },timeLapse)
 }
@@ -144,7 +143,7 @@ setTimeout(() => {
             return `${hour}:${min}:${sec}`
         },
 
-        updateCurrentDateTime: function(date){
+        updateCurrentDateTime: function(){
             dateTime = new Date();
             this.hour = dateTime.getHours();
             this.min = dateTime.getMinutes();
@@ -170,14 +169,6 @@ setTimeout(() => {
         currentDateTime.updateCurrentDateTime();
         date.innerText = currentDateTime.shortDate;
         clock.innerText = currentDateTime.currentTimeMsg();
-
-        let testAux = [undefined , undefined, undefined, undefined]; /*[hour, min, sec, breaktime]*/
-        if(currentDateTime.hour === testAux[0] && currentDateTime.min === testAux[1] && currentDateTime.sec === testAux[2]){
-            console.log(`Test Started at ${currentDateTime.currentTimeMsg()}`);
-            document.getElementById('workingTimeInp').value = testAux[3];
-            runWorkTimer(testAux);
-        }
-
     }, timeLapse);
 
 }, 2000);
