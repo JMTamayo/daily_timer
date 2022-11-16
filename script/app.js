@@ -7,7 +7,7 @@ function alertBeep(totalTime){
             };
         }, 1000*j);
     };
-    console.log("Running beep...")
+    console.log("Running alarm...")
 };
 
 function workingTimeInpCheck(id){
@@ -30,8 +30,6 @@ function runWorkTimer(){
     document.getElementById('workingTimeInp').readOnly = true;
     document.getElementById('workingTimeBtn').style.display = 'none';
     document.getElementById('stopWorkingTimeBtn').style.display = 'block';
-
-    console.log("ruuuuun")
 
     let timeLapse = 1000;
     let workingTime = {
