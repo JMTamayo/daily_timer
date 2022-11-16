@@ -7,6 +7,7 @@ function alertBeep(totalTime){
             };
         }, 1000*j);
     };
+    console.log("Running beep...")
 };
 
 function workingTimeInpCheck(id){
@@ -24,7 +25,7 @@ function stopWorkingTimer(){
     document.getElementById('workingTimeBtn').style.justifyContent = 'center';
 };
 
-function runWorkingTimer(){
+function runWorkTimer(test){
     document.getElementById('workingTimerResult').style.display = 'flex';
     document.getElementById('workingTimeInp').readOnly = true;
     document.getElementById('workingTimeBtn').style.display = 'none';
@@ -35,11 +36,14 @@ function runWorkingTimer(){
         hour: 0,
         minute:  0,
         totalSeconds: 0,
+        initialMillisec : 0,
+        currentMillisec: 0,
         running: false,
+        breakTime: Number(document.getElementById('workingTimeInp').value),
 
         updateWorkingTime: function(){
-            this.hour = Math.floor(this.totalSeconds/3600);
-            this.minute = Math.floor(this.totalSeconds/60)%60;
+            this.minute = Math.floor((this.totalSeconds/60)%60);
+            this.hour = Math.floor(((this.totalSeconds/60)/60)%60);
 
             if(document.getElementById('workingTimeInp').readOnly === true){
                 this.running = true;
@@ -69,14 +73,21 @@ function runWorkingTimer(){
             return `${hours}:${minutes}`;
         },
 
-        breakAlert: function(){
-            let breakTime = Number(document.getElementById('workingTimeInp').value);
-            if((this.totalSeconds/60)%breakTime === 0){
+        breakAlert: function(test){
+            let aux = (this.totalSeconds/60)%this.breakTime;
+            if( aux === 0){
+                console.log(`Alert at ${this.currentTimeMsg()} (each ${test[3]})`);
+                console.log([test[4], aux]);
                 alertBeep(15);
             };
+        },
+
+        getMillisec: function(){
+            return new Date().getTime();
         }
     }
-
+    
+    workingTime.initialMillisec = workingTime.getMillisec();
     workingTime.updateWorkingTime();
     document.getElementById('workingTimerResult').innerText = workingTime.currentTimeMsg();
     workingTime.running = true;
@@ -85,9 +96,11 @@ function runWorkingTimer(){
         if(workingTime.running === false){
             clearInterval(flag);
         };
-        workingTime.totalSeconds++;
+        workingTime.currentMillisec = workingTime.getMillisec();
+        workingTime.totalSeconds = Math.floor((workingTime.currentMillisec - workingTime.initialMillisec)/1000);
         workingTime.updateWorkingTime();
-        workingTime.breakAlert();
+        test[4] = `${workingTime.hour}:${workingTime.minute}`;
+        workingTime.breakAlert(test);
         document.getElementById('workingTimerResult').innerText = workingTime.currentTimeMsg();
     },timeLapse)
 }
@@ -148,16 +161,23 @@ setTimeout(() => {
         }
     };
 
+    setTimeout(() => {
+        document.getElementById('timerCont').style.display = 'flex';
+        document.getElementById('timerCont').style.flexDirection = 'column';
+    }, timeLapse);
+
     setInterval(() => {
         currentDateTime.updateCurrentDateTime();
         date.innerText = currentDateTime.shortDate;
         clock.innerText = currentDateTime.currentTimeMsg();
-    }, timeLapse);
 
-    
-    setTimeout(() => {
-        document.getElementById('timerCont').style.display = 'flex';
-        document.getElementById('timerCont').style.flexDirection = 'column';
-    }, timeLapse)
+        let testAux = [undefined , undefined, undefined, undefined]; /*[hour, min, sec, breaktime]*/
+        if(currentDateTime.hour === testAux[0] && currentDateTime.min === testAux[1] && currentDateTime.sec === testAux[2]){
+            console.log(`Test Started at ${currentDateTime.currentTimeMsg()}`);
+            document.getElementById('workingTimeInp').value = testAux[3];
+            runWorkTimer(testAux);
+        }
+
+    }, timeLapse);
 
 }, 2000);
