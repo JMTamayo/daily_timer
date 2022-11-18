@@ -7,12 +7,11 @@ function alertBeep(totalTime){
             };
         }, 1000*j);
     };
-    console.log("Running alarm...")
 };
 
 function workingTimeInpCheck(id){
     let inputValue = document.getElementById(id).value;
-    if(Number(inputValue)%1 !== 0){
+    if(Number(inputValue)%1 !== 0 || Number(inputValue) < 1){
         document.getElementById(id).value = "";
     }
 };
@@ -31,17 +30,23 @@ function runWorkTimer(){
     document.getElementById('workingTimeBtn').style.display = 'none';
     document.getElementById('stopWorkingTimeBtn').style.display = 'block';
 
-    let timeLapse = 1000;
+    let timeLapse = 100;
+    
     let workingTime = {
         hour: 0,
         minute:  0,
         totalSeconds: 0,
         initialMillisec : 0,
         currentMillisec: 0,
+        totalMilliseconds: 0,
         running: false,
-        breakTime: Number(document.getElementById('workingTimeInp').value),
+        breakTime: Number(document.getElementById('workingTimeInp').value)*60*1000,
 
         updateWorkingTime: function(){
+            workingTime.currentMillisec = workingTime.getMillisec();
+            workingTime.totalMilliseconds = workingTime.currentMillisec - workingTime.initialMillisec;
+            workingTime.totalSeconds = Math.floor(workingTime.totalMilliseconds/1000);
+            
             this.minute = Math.floor((this.totalSeconds/60)%60);
             this.hour = Math.floor(((this.totalSeconds/60)/60)%60);
 
@@ -74,8 +79,9 @@ function runWorkTimer(){
         },
 
         breakAlert: function(){
-            let aux = (this.totalSeconds/60)%this.breakTime;
-            if( aux === 0){
+            let aux = (this.totalMilliseconds)%this.breakTime;
+            console.log(`${this.totalMilliseconds} - ${aux}`)
+            if( aux < timeLapse){
                 alertBeep(15);
             };
         },
@@ -94,8 +100,6 @@ function runWorkTimer(){
         if(workingTime.running === false){
             clearInterval(flag);
         };
-        workingTime.currentMillisec = workingTime.getMillisec();
-        workingTime.totalSeconds = Math.floor((workingTime.currentMillisec - workingTime.initialMillisec)/1000);
         workingTime.updateWorkingTime();
         workingTime.breakAlert();
         document.getElementById('workingTimerResult').innerText = workingTime.currentTimeMsg();
@@ -106,13 +110,14 @@ setTimeout(() => {
     let clock = document.getElementById("clock");
     let date = document.getElementById("date");
     let dateTime;
-    const timeLapse = 1000;
+    const timeLapse = 100;
     let currentDateTime = {
         fullDateTime: "",
         shortDate: "",
         hour: 0,
         min: 0,
         sec: 0,
+        msecflag: 0,
 
         currentTimeMsg: function(){
             let hour, min, sec;
@@ -148,14 +153,8 @@ setTimeout(() => {
             this.sec = dateTime.getSeconds();
             this.fullDateTime = Date();
             this.shortDate = this.fullDateTime.slice(0, 15);
-            this.newHourAlert();
-        },
 
-        newHourAlert: function(){
-            if(this.min === 0 && this.sec === 0){
-                alertBeep(1);
-            }
-        }
+        },
     };
 
     setTimeout(() => {
