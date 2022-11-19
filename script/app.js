@@ -81,7 +81,7 @@ function runWorkTimer(){
 
         breakAlert: function(){
             let aux = (this.totalMilliseconds)%this.breakTime;
-            console.log(`${workingTime.currentTimeMsg()} millisec: ${workingTime.totalMilliseconds} --> flag: ${aux}`);
+            //console.log(`${workingTime.currentTimeMsg()} millisec: ${workingTime.totalMilliseconds} --> flag: ${aux}`);
             if( aux < timeLapse){
                 alertBeep(15, workingTime.currentTimeMsg());
             };
